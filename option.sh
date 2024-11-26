@@ -23,8 +23,7 @@ cb-func () {
         echo -e "${red}-Exiting-${endcolor}"
         clear 
     elif [ "$choice" = 'Audio Fix' ]; then
-        yay -S python3 --needed
-        yay -S git --needed
+        yay -S python3 git pulseaudio --needed
         mkdir ~/repo
         cd ~/repo
         git clone https://github.com/WeirdTreeThing/chromebook-linux-audio.git
