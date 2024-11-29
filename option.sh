@@ -189,6 +189,4 @@ while [ "$script"=true ];do
         graphics-func
     fi
 done
-
-
-
+break
