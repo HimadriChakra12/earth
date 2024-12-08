@@ -1,4 +1,4 @@
-### Options Script
+# Options Script
 
 This script provides the user with options to install apps on their arch linux computer.
 It is designed to be be used with ML4W.
