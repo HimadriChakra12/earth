@@ -19,6 +19,14 @@ exit-msg () {
         clear 
 		exit
 }
+update-sys () {
+	    title
+        text 'Updating'
+        yay -Syyu
+        clear
+        flatpak update
+		clear
+}
 
 blue='\e[34m'
 green='\e[32m'

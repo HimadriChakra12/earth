@@ -1,26 +1,23 @@
 #!/usr/bin/env bash
 
-source func/common-func.sh
-source func/app-func.sh
-source func/devices-func.sh
-source func/settings-func.sh
+source "func/check-func.sh"
+source "func/common-func.sh"
+source "func/app-func.sh"
+source "func/devices-func.sh"
+source "func/settings-func.sh"
 
 # Options #
 main-option () {
     choice=$(gum choose 'App' 'Settings' 'Devices' 'Update' '=Exit=')
 }
 # Variables #
-app='True' 
-settings='True' 
-devices='True' 
+app=true 
+settings=true 
+devices=true 
 script=true
 
 #############################
-#Yay Check #
-if ! command -v yay &> /dev/null; then
-    echo -e "${red}Error: yay is not installed. Please install yay and try again.${endcolor}"
-    exit 1
-fi
+ yay-check
 
 clear
 while [ "$script" =  true ];do
@@ -32,7 +29,7 @@ while [ "$script" =  true ];do
         exit-msg
     ######################################################
     elif [ "$choice" = 'App' ]; then #app options
-        while [ "$app" = 'True' ];do
+        while [ "$app" = true ];do
             title
             app-option
             clear
@@ -60,7 +57,7 @@ while [ "$script" =  true ];do
         done
     ######################################################
     elif [ "$choice" = 'Settings' ]; then #Linux settings option
-        while [ "$settings" = 'True' ];do    
+        while [ "$settings" = true ];do    
             title
             settings-option
             clear
@@ -79,7 +76,7 @@ while [ "$script" =  true ];do
         done
     ######################################################
     elif [ "$choice" = 'Devices' ]; then #Device specific options
-        while [ "$devices" = 'True' ];do    
+        while [ "$devices" = true ];do    
             title
             dev-option
             clear
@@ -95,10 +92,6 @@ while [ "$script" =  true ];do
         done
     ######################################################
     elif [ "$choice" = 'Update' ]; then #Update apps
-        title
-        echo -e  "${bold}Updating${endcolor}"
-        yay -Syyu
-        clear
-        flatpak update
+        update-sys
     fi
 done

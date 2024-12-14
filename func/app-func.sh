@@ -1,4 +1,4 @@
-source "$(dirname "${BASH_SOURCE[0]}")/func/common-func.sh"
+source func/common-func.sh
 # Functions
 app-option () {
     text 'Apps'
