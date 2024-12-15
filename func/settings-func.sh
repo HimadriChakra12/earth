@@ -35,8 +35,10 @@ shell-check () {
         fi
     elif [ "$(basename "$SHELL")" = "bash" ]; then
         echo 'Your current shell is {{ Bold (Color "0" "7" " Bash ") }}.' | gum format -t template
-    echo -e "$(gum style 'Would you like to change to' --foreground 7) $(gum style 'zsh' --foreground 2)?"
-    
+        echo -e "\n$(gum style 'Would you like to change to' --foreground 7) $(gum style 'Zsh' --foreground 2)?"
+        if gum confirm "Change shell?" --prompt.foreground="15" --selected.background 14 --unselected.foreground 15; then
+            shell-changer-zsh
+        fi
     else
         echo "The current shell is $current_shell."
     fi
