@@ -20,3 +20,9 @@ yay-check () {
         fi
     fi
 }
+
+gum-check () {
+    if ! command -v gum &> /dev/null; then
+        yay -S --needed --noconfirm gum
+    fi
+}

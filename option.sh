@@ -17,8 +17,8 @@ devices=true
 script=true
 
 #############################
- yay-check
-
+yay-check
+gum-check
 clear
 while [ "$script" =  true ];do
     title
