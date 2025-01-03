@@ -5,103 +5,93 @@ app-option () {
     choice=$(gum choose 'Browser' 'File Manager' 'Media' 'Graphics' '=Cancel=' '=Exit=')
 }
 
-browser-option () {
-    echo -e "Select a ${blue}browser${endcolor} to install."
-    choice=$(gum choose 'Brave' 'Vivaldi' 'Firefox' 'Zen' '=Cancel=')
-}
-filemanager-option () {
-    echo -e "Select a ${blue}file manager${endcolor} to install."
-    choice=$(gum choose 'Nemo' 'Yazi' 'Thunar' 'Nautilus' 'Dolphin' '=Cancel=')
-}
-media-option () {
-    echo -e "Select a ${blue}package${endcolor} to install.These are also available on ${blue}Flathub${endcolor}"
-    choice=$(gum choose 'Switcheroo' 'Upscayl' '=Cancel=')
-}
-graphics-option () {
-    echo -e "Select a ${blue}package${endcolor} to install."
-    choice=$(gum choose 'Lunacy' 'Inkscape' '=Cancel=')
+# Function to handle option selection
+select-option () {
+    local category=$1
+    shift
+    local options=("$@")
+    echo -e "Select a ${blue}${category}${endcolor} to install."
+    choice=$(gum choose "${options[@]}" '=Cancel=')
+    clear
 }
 
-#app sub-categories
-browser-option () {
-    echo -e "Select a ${blue}browser${endcolor} to install."
-    choice=$(gum choose 'Brave' 'Vivaldi' 'Firefox' 'Zen' '=Cancel=')
-}
-filemanager-option () {
-    echo -e "Select a ${blue}file manager${endcolor} to install."
-    choice=$(gum choose 'Nemo' 'Yazi' 'Thunar' 'Nautilus' 'Dolphin' '=Cancel=')
-}
-media-option () {
-    echo -e "Select a ${blue}package${endcolor} to install.These are also available on ${blue}Flathub${endcolor}"
-    choice=$(gum choose 'Switcheroo' 'Upscayl' '=Cancel=')
-}
-graphics-option () {
-    echo -e "Select a ${blue}package${endcolor} to install."
-    choice=$(gum choose 'Lunacy' 'Inkscape' '=Cancel=')
+# Function to install selected package
+install-package () {
+    local package=$1
+    if [ "$choice" = '=Cancel=' ]; then
+        clear
+    else
+        if yay -S "$package" --noconfirm; then
+            echo "Installation of $package successful."
+        else
+            echo "Error installing $package."
+        fi
+        clear
+    fi
 }
 
-#commands /app installers
+# App sub-categories
+browser-option () {
+    select-option "browser" 'Brave' 'Vivaldi' 'Firefox' 'Zen'
+}
+
+filemanager-option () {
+    select-option "file manager" 'Nemo' 'Yazi' 'Thunar' 'Nautilus' 'Dolphin'
+}
+
+media-option () {
+    select-option "application" 'Switcheroo' 'Upscayl'
+}
+
+graphics-option () {
+    select-option "application" 'Lunacy' 'Inkscape'
+}
+
+# Commands / app installers
 browser-func () {
-    if [ "$choice" = '=Cancel=' ]; then
-        clear
-    elif [ "$choice" = 'Brave' ]; then
-        yay -S brave-bin
-        clear
-    elif [ "$choice" = 'Vivaldi' ]; then
-        yay -S vivaldi
-        clear
-    elif [ "$choice" = 'Firefox' ]; then
-        yay -S firefox    
-        clear
-    elif [ "$choice" = 'Zen' ]; then
-        yay -S zen-browser-bin    
-        clear
-    fi
+    case "$choice" in
+        'Brave') install-package "brave-bin" ;;
+        'Vivaldi') install-package "vivaldi" ;;
+        'Firefox') install-package "firefox" ;;
+        'Zen') install-package "zen-browser-bin" ;;
+    esac
 }
+
 filemanager-func () {
-    if [ "$choice" = '=Cancel=' ]; then
-        clear 
-    elif [ "$choice" = 'Nemo' ]; then
-        yay -S nemo
-        clear
-    elif [ "$choice" = 'Nautilus' ]; then
-        yay -S nautilus
-        clear
-    elif [ "$choice" = 'Dolphin' ]; then
-        yay -S dolphin   
-        clear 
-    elif [ "$choice" = 'Thunar' ]; then
-        yay -S thunar 
-        clear   
-    elif [ "$choice" = 'Yazi' ]; then
-        yay -S yazi
-        clear   
-    fi
+    case "$choice" in
+        'Nemo') install-package "nemo" ;;
+        'Yazi') install-package "yazi" ;;
+        'Thunar') install-package "thunar" ;;
+        'Nautilus') install-package "nautilus" ;;
+        'Dolphin') install-package "dolphin" ;;
+    esac
 }
+
 media-func () {
-    if [ "$choice" = '=Cancel=' ]; then
-        clear
-     
-    elif [ "$choice" = 'Switcheroo' ]; then
+    if [ "$choice" = 'Switcheroo' ]; then
         yay -S flatpak --needed
-        flatpak install flathub io.gitlab.adhami3310.Converter
+        if flatpak install flathub io.gitlab.adhami3310.Converter; then
+            echo "Switcheroo installed successfully."
+        else
+            echo "Error installing Switcheroo."
+        fi
         clear
     elif [ "$choice" = 'Upscayl' ]; then
         yay -S flatpak --needed
-        flatpak install flathub org.upscayl.Upscayl
-        clear 
+        if flatpak install flathub org.upscayl.Upscayl; then
+            echo "Upscayl installed successfully."
+        else
+            echo "Error installing Upscayl."
+        fi
+        clear
     fi
 }
+
 graphics-func () {
-    if [ "$choice" = '=Cancel=' ]; then
-        clear 
-    elif [ "$choice" = 'Lunacy' ]; then
-        yay -S lunacy-bin
-        clear
-    elif [ "$choice" = 'Inkscape' ]; then
-        yay -S inkscape 
-        clear 
-    fi
+    case "$choice" in
+        'Lunacy') install-package "lunacy-bin" ;;
+        'Inkscape') install-package "inkscape" ;;
+    esac
 }
 
 # Main menu

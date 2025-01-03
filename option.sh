@@ -8,7 +8,10 @@ source "func/settings-func.sh"
 
 # Options #
 main-option () {
+    title
+    text 'Please select a option:'
     choice=$(gum choose 'App' 'Settings' 'Devices' 'Update' '=Exit=')
+    clear
 }
 # Variables #
 app=true 
@@ -21,10 +24,7 @@ yay-check
 gum-check
 clear
 while [ "$script" =  true ];do
-    title
-    text 'Please select a option:' #main options
     main-option
-    clear
     if [ "$choice" = '=Exit=' ]; then
         exit-msg
     ######################################################
@@ -40,19 +40,19 @@ while [ "$script" =  true ];do
             elif [ "$choice" = 'Browser' ]; then
                 title
                 browser-option
-                browser-func
+                install-package
             elif [ "$choice" = 'File Manager' ]; then
                 title
                 filemanager-option
-                filemanager-func
+                install-package
             elif [ "$choice" = 'Media' ]; then
                 title
                 media-option
-                media-func
+                install-package
             elif [ "$choice" = 'Graphics' ]; then
                 title
                 graphics-option
-                graphics-func
+                install-package
             fi
         done
     ######################################################

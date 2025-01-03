@@ -2,10 +2,12 @@ title () {
     gum style \
 	--foreground 4 --border-foreground 3 --border double \
 	--align center --width 92 --margin "0 1" --padding "2 4" \
-	"$(echo ' ▗▄▖ ▗▄▄▖▗▄▄▄▖▗▄▄▄▖ ▗▄▖ ▗▖  ▗▖ ▗▄▄▖
-▐▌ ▐▌▐▌ ▐▌ █    █  ▐▌ ▐▌▐▛▚▖▐▌▐▌   
-▐▌ ▐▌▐▛▀▘  █    █  ▐▌ ▐▌▐▌ ▝▜▌ ▝▀▚▖
-▝▚▄▞▘▐▌    █  ▗▄█▄▖▝▚▄▞▘▐▌  ▐▌▗▄▄▞▘')"
+	"$(echo -e '  ____           _     ___           _        _ _ 
+  |  _ \\ ___  ___| |_  |_ _|_ __  ___| |_ __ _| | | 
+ | |_) / _ \\/ __| __|  | || '\'' \\ / __| __/ _` | | |
+ |  __/ (_) \\__ \\ |_   | || | | \\__ \\ || (_| | | |
+ |_|   \\___/|___/\\__| |___|_| |_|___/\\__\\__,_|_|_|')"
+
 }
 text () {
 	gum style \
@@ -21,12 +23,17 @@ exit-msg () {
 }
 update-sys () {
 	    title
-        text 'Updating'
-        yay -Syyu
+        text 'Updating...'
+        yay -Syyu --noconfirm
         clear
-        flatpak update
+        flatpak update -y
 		clear
 }
+handle_exit () {
+	
+}
+
+
 
 blue='\e[34m'
 green='\e[32m'
