@@ -40,7 +40,7 @@ cb-func () {
         git clone https://github.com/WeirdTreeThing/cros-keyboard-map
         cd cros-keyboard-map
         ./install.sh
-        yay -S lunacy-bin brave-bin vscodium-bin flatpak
+        yay -S lunacy-bin brave-bin cursor-bin flatpak telegram nemo btop
         flatpak install flathub org.upscayl.Upscayl
         flatpak install flathub io.gitlab.adhami3310.Converter
         clear
