@@ -1,10 +1,10 @@
 #! /bin/bash
 # VARIABLES #
 aur_helper="null"
-
+screen_width=$(( $(tput cols) - 4))
 # FUNCTIONS #
 check_aur_helper_installed () {
-    local aur_helpers_list=( "paru" "pikaur")
+    local aur_helpers_list=("yay" "paru" "pikaur")
     local helper_count=0
     for i in "${aur_helpers_list[@]}"; do
         if ! command -v "${i}" &> /dev/null; then
@@ -61,6 +61,51 @@ custom_aur_helper () {
     done
 }
 
-#    MAIN    #
+install_dependencies () {
+    if ! command -v gum &> /dev/null \
+    ! command -v jq &> /dev/null; then
+        echo -e "Installing dependecies: \n- gum \n- jq"
+        yay -S --needed --noconfirm gum jq
+        echo "Finished"
+    fi
+}
+tput_clean_text_area () {
+    tput cup 12 0
+    tput ed
+}
+title () {
+    gum style \
+	--foreground 4 --border-foreground 3 --border double \
+	--align center --width ${screen_width} --margin "0 1" --padding "2 4" \
+	"$(echo -e '  ____           _     ___           _        _ _ 
+  |  _ \\ ___  ___| |_  |_ _|_ __  ___| |_ __ _| | | 
+ | |_) / _ \\/ __| __|  | || '\'' \\ / __| __/ _` | | |
+ |  __/ (_) \\__ \\ |_   | || | | \\__ \\ || (_| | | |
+ |_|   \\___/|___/\\__| |___|_| |_|___/\\__\\__,_|_|_|')"
+
+}
+text () {
+    gum style \
+    --foreground 7 --border-foreground 4 --border normal \
+    --align left --width ${screen_width} --margin "0 1" --padding "1 1" \
+    "$(echo  -e "$1")"
+}
+
+options () {
+    local option_list=("$@")
+    gum choose \
+    --limit 1 --header "" --cursor "  ➜ "  --cursor.foreground 4 \
+    "${option_list[@]}" 'Exit [⟹]'
+}
+#    CHECKS    #
 check_aur_helper_installed
-echo "$aur_helper"
+install_dependencies
+#    MAIN    #
+while true; do
+    clear
+    title
+    text "Welcome to the the Post-Install script!\nTo begin, select an option:"
+    options "App Installer" "ML4W Settings" "Update" 'Cancel [↩]'
+    break
+done
+    
