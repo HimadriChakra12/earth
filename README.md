@@ -1,27 +1,42 @@
-# Post install Script
+# Post Install
+##### by 4urora3night
+##### Version : 2.0.0 [ Beta ]
+A script to install apps and configure ML4W settings.
 
-⚠️ An new version is in progress ⚠️
+*Index:*
+-	[Requirements](url)
+-	[Usage](url)
+-	[Wiki](url)
 
-This script provides the user with options to install apps on their arch linux computer.
-It is designed to be be used with ML4W.
-Inspired by ml4w-options :)
-To download and run:
+### *Requirements:*
+- Arch linux system
 
-1)
-```
-git clone https://github.com/4urora3night/options.git
-```
-2)
-```
-cd options
-```
-3)
-```
-./option.sh
-```
-## NOTES
-> As I am a solo dev for this script, I use AI auto-complete on repetitive sections of code to speed up script prodution
+Thats it, and internet connection is all you need.
+### *Usage:*
+You can download the script with:\
+```git clone https://github.com/4urora3night/options.git```
 
-> I will build a better script, hopefully 🤞.
-## BUGS
->  A few errors when lauched without yay installed
+```cd options```
+
+```./test-code.sh ```
+
+or
+
+```bash <(curl -s https://raw.githubusercontent.com/4urora3night/options/refs/heads/main/test-code.sh)```
+
+### *Wiki:*
+
+To use the App installer feature, you need a {Name}.json file containing AUR/pacman packages like this:
+```
+{
+    "packages" : [ "fzf", "git", "neovim" ]
+}
+```
+🚧 WIP 🚧
+
+---
+### *Thanks to:*
+- *Gum*  
+	➜ Styling
+- *ML4W options script* \
+	➜ Inspration and code borrowed
