@@ -4,9 +4,9 @@
 A script to install apps and configure ML4W settings.
 
 *Index:*
--	[Requirements](url)
--	[Usage](url)
--	[Wiki](url)
+-	[Requirements](https://github.com/4urora3night/Post-Install#requirements)
+-	[Usage](https://github.com/4urora3night/Post-Install?tab=readme-ov-file#usage)
+-	[Wiki](https://github.com/4urora3night/Post-Install?tab=readme-ov-file#wiki)
 
 ### *Requirements:*
 - Arch linux system
