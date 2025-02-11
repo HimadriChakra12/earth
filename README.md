@@ -29,7 +29,7 @@ cd post-install
 or
 
 ```
-bash <(curl -s https://raw.githubusercontent.com/4urora3night/options/refs/heads/main/post-install.sh)
+bash <(curl -s https://raw.githubusercontent.com/4urora3night/post-install/refs/heads/main/post-install.sh)
 ```
 
 ### *Wiki:*
