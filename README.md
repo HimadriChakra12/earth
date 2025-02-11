@@ -14,15 +14,15 @@ A script to install apps and configure ML4W settings.
 Thats it, and internet connection is all you need.
 ### *Usage:*
 You can download the script with:\
-```git clone https://github.com/4urora3night/options.git```
+```https://github.com/4urora3night/Post-Install.git```
 
-```cd options```
+```cd post-install```
 
-```./test-code.sh ```
+```./post-install.sh ```
 
 or
 
-```bash <(curl -s https://raw.githubusercontent.com/4urora3night/options/refs/heads/main/test-code.sh)```
+```bash <(curl -s https://raw.githubusercontent.com/4urora3night/options/refs/heads/main/post-install.sh)```
 
 ### *Wiki:*
 
