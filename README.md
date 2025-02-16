@@ -1,19 +1,14 @@
 # Post Install
 ##### by 4urora3night
-##### Version : 2.0.0 [ Beta ]
-A script to install apps and configure ML4W settings.
+##### Version : 150.0 [ Beta ]
+A script to install apps with a simple json file, focusing on automation. Inspired by the ML4W options script.
 
-*Index:*
--	[Requirements](https://github.com/4urora3night/Post-Install#requirements)
--	[Usage](https://github.com/4urora3night/Post-Install?tab=readme-ov-file#usage)
--	[Wiki](https://github.com/4urora3night/Post-Install?tab=readme-ov-file#wiki)
-
-### *Requirements:*
+### *-Requirements-*
 - Arch linux system
 
 Thats it, and internet connection is all you need.
-### *Usage:*
-You can download the script with:\
+### *-Usage-*
+You can download the script with:
 ```
 https://github.com/4urora3night/Post-Install.git
 ```
@@ -32,14 +27,20 @@ or
 bash <(curl -s https://raw.githubusercontent.com/4urora3night/post-install/refs/heads/main/post-install.sh)
 ```
 
-### *Wiki:*
-
 To use the App installer feature, you need a {Name}.json file containing AUR/pacman packages like this:
 ```
 {
     "packages" : [ "fzf", "git", "neovim" ]
 }
 ```
+### *-Note-*
+*Known bugs:*
+	
+- [ ] Paru installer loops
+- [ ] Missing fzf in dependencies
+- [ ] Unicode icons don't render 
+- [ ] Flatpak apps can be linked to a shortcut.
+
 🚧 WIP 🚧
 
 ---
