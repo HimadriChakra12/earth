@@ -10,32 +10,53 @@ tput_clean_text_area() {
 title() {
   gum style \
     --foreground 4 --border-foreground 2 --border double \
-    --align center --width ${text_box_size} --margin "0 1" --padding "2 0" \
-    "$(echo "______         _     _____          _        _ _ 
+    --align center --width "${text_box_size}" --margin "0 1" --padding "2 0" \
+    "______         _     _____          _        _ _ 
 | ___ \       | |   |_   _|        | |      | | |
 | |_/ /__  ___| |_    | | _ __  ___| |_ __ _| | |
 |  __/ _ \/ __| __|   | || '_ \/ __| __/ _\` | | |
 | | | (_) \__ \ |_   _| || | | \__ \ || (_| | | |
-\_|  \___/|___/\__|  \___/_| |_|___/\__\__,_|_|_|")"
+\_|  \___/|___/\__|  \___/_| |_|___/\__\__,_|_|_|"
 }
 text_box() {
-  local text="$(echo -e "$1")"
+  local text
+  text="$(echo -e "$1")"
   gum style \
     --foreground 7 --border-foreground 4 --border normal \
-    --align left --width ${text_box_size} --margin "0 1" --padding "1 1" \
+    --align left --width "${text_box_size}" --margin "0 1" --padding "1 1" \
     "${text}"
 }
 text_box_confirm() {
-  local text="$(echo -e "$1")"
+  local text
+  text="$(echo -e "$1")"
   gum style \
     --foreground 7 --border-foreground 1 --border normal \
-    --align left --width ${text_box_size} --margin "0 1" --padding "1 1" \
+    --align left --width "${text_box_size}" --margin "0 1" --padding "1 1" \
     "${text}"
 }
 text_confirm() {
   gum confirm \
     "$1" --prompt.foreground 7 --selected.background 2
 }
+fzf_stylised() 
+{
+   fzf --style full \
+    --border rounded \
+    --margin 0,1 \
+    --height 20% \
+    --border-label ' Package Finder ' --input-label ' Input ' --header-label ' File Type '
+}
+fzf_stylised_preview() 
+{
+   fzf --style full \
+    --border rounded \
+    --margin 0,1 \
+    --height 20% \
+    --border-label ' Toml Finder ' --input-label ' Input ' --header-label ' File Type '\
+    --preview 'bat --style=numbers --color=always {}'  
+}
+
+
 #-------------------------------------------
 check_app_installed() {
   if ! command -v "$1" &>/dev/null; then

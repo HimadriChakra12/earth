@@ -11,7 +11,7 @@ option_submenus ()
   "${option_list[@]}" '[Back]' '[Exit]')
   case $choice in
     "[Exit]") clear && exit ;;
-    "[Back]") return && break;;
+    "[Back]") break;;
   esac 
 }
 option_home ()

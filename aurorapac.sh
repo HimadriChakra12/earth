@@ -1,11 +1,10 @@
 #!/bin/bash
-
 # -Import functions- #
 source './lib/settings.sh'
 source './lib/core.sh'
 source './lib/utils.sh'
 source './lib/app-installers.sh'
-source './lib/aur_helper.sh' 
+source './lib/aur_helper.sh'
 if [[ "$(tty)" == "/dev/tty"* ]]; then
   source './lib/tty-ui.sh'
 else
@@ -14,19 +13,19 @@ fi
 
 # --  Functions  -- #
 install_dependencies() {
-  local dependencies=("fzf" "gum" "yq")
+  local dependencies=("fzf" "gum" "yq" "fd")
   local dependencies_install=()
   local update=1
   for i in "${dependencies[@]}"; do
-    if check_app_installed "$i"; then
-      dependencies_install+=("$i")
+    if check_app_installed "${i}"; then
+      dependencies_install+=("${i}")
       update=0
     fi
   done
-  if [ $update -eq 0 ]; then
+  if [[ "${update}" -eq 0 ]]; then
     echo -e "Installing dependencies"
     for i in "${dependencies_install[@]}"; do
-      echo " - $i"
+      echo " - ${i}"
     done
     sleep 1
     sudo pacman -Sy
@@ -36,7 +35,7 @@ install_dependencies() {
 
 # --  Variable  -- #
 text_box_size=$(($(tput cols) - 4))
-script_dir=$(pwd)
+config_toml=Null
 
 install_dependencies
 aur_helper_checks
@@ -46,6 +45,6 @@ while true; do
   option_home '(App Installer)' '(Settings)'
   case $choice in
   "(Settings)") settings ;;
-  "(App Installer)") app_installer;;
+  "(App Installer)") aurora_unpac ;;
   esac
 done

@@ -1,10 +1,5 @@
 #!/bin/bash
 # by 4urora3night
-
-
-
-
-
 aur_helper_checks() {
   clear
   title
@@ -13,7 +8,7 @@ aur_helper_checks() {
     text_box "To use this script, an AUR helper must be set."
     if text_confirm "Do you have a AUR helper installed?"; then
       while true; do
-        AUR_HELPER="$(compgen -c | sort -u | fzf --height 20%)"
+        AUR_HELPER="$(compgen -c | sort -u | fzf_stylised)"
         tput_clean_text_area
         text_box_confirm "! $AUR_HELPER is set as your AUR helper. !"
         option_submenus 'Ok' 'Redo'
@@ -40,13 +35,13 @@ install_yay() {
   if text_confirm "Do you want to complie yay"; then
     sudo pacman -S --needed git base-devel
     git clone https://aur.archlinux.org/yay-bin.git
-    cd yay-bin
+    cd yay bin || return
     makepkg -si
     cd .. && rm -r yay-bin
   else
     sudo pacman -S --needed git base-devel
     git clone https://aur.archlinux.org/yay.git
-    cd yay
+    cd yay || return
     makepkg -si
     cd .. && sudo rm -rf yay
   fi
@@ -54,7 +49,7 @@ install_yay() {
 install_paru() {
   sudo pacman -S --needed base-devel
   git clone https://aur.archlinux.org/paru.git
-  cd paru
+  cd paru || return
   makepkg -si
   cd .. && sudo rm -rf paru
 }
