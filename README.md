@@ -32,7 +32,6 @@ install = ['cava', 'fzf']
 ```
 
 ### *-Note-*
-- Maybe a rewrite to into Go
 
 🧪 *Known bugs:*
 	
