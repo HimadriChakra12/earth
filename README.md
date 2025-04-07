@@ -1,4 +1,4 @@
-# Post Install
+# Aurora Pac
 ##### by 4urora3night
 ##### 🆕 Version : 150.0 [ Test ]
 A script to install apps with a simple toml file, automating your setups. 
