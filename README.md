@@ -1,25 +1,21 @@
 # Aurora Pac
-##### by 4urora3night
-##### 🆕 Version : 150.0 [ Test ]
-A script to install apps with a simple toml file, automating your setups. 
+##### by `4urora3night`
+##### Version: `150.1` — *[Test Build]*
+A script to install apps with `.toml` file, automating your setups, saving time. 
 Inspired by the ML4W options script.
 
-### 📝 *Requirements*
+### Requirements
 - Arch linux system
+- Active WiFi connection
 
-Thats it, and internet connection is all you need.
-### 💻 *Usage*
+### Usage
 You can download the script with:
-```
-https://github.com/4urora3night/aurora-pac.git
-```
+Clone the repo:
 
-```
+```bash
+git clone https://github.com/4urora3night/aurora-pac.git
 cd aurora-pac
-```
-
-```
-./aurorapac.sh   
+./aurorapac.sh
 ```
 
 
@@ -30,8 +26,14 @@ To use the App installer feature, you need a {Name}.toml file containing AUR/pac
 [pacman]
 install = ['cava', 'fzf']
 ```
+### Changelog
 
-### *Note*
+> 🗓️ 2025-04-07
+> Added automatic AUR helper installer from legacy script.
+
+
+
+### Notes
 
 🧪 *Known bugs:*
  
@@ -39,7 +41,8 @@ install = ['cava', 'fzf']
 
 ---
 ### *Thanks to:*
-- *Gum*  
-	➜ Styling
+- [*Gum*](https://github.com/charmbracelet/gum) 
+	➜ All the eyecandy(styling).
 - *ML4W options script* \
-	➜ Inspration and some code borrowed.
+	➜ You could [Check this out](https://github.com/mylinuxforwork/packages-installer).
+	➜ For inspration and some code borrowed.
