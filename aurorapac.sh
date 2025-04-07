@@ -40,8 +40,7 @@ config_toml=Null
 install_dependencies
 aur_helper_checks
 while true; do
-  clear
-  title
+  tput_clean_text_area
   option_home '(App Installer)' '(Settings)'
   case $choice in
   "(Settings)") settings ;;

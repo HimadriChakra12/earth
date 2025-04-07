@@ -3,24 +3,33 @@
 aur_helper_checks() {
   clear
   title
-  while true; do
-    tput_clean_text_area
-    text_box "To use this script, an AUR helper must be set."
-    if text_confirm "Do you have a AUR helper installed?"; then
-      while true; do
-        AUR_HELPER="$(compgen -c | sort -u | fzf_stylised)"
-        tput_clean_text_area
-        text_box_confirm "! $AUR_HELPER is set as your AUR helper. !"
-        option_submenus 'Ok' 'Redo'
-        case $choice in
-        'Ok') return 0 ;;
-        'Redo') break ;;
-        esac
-      done
-    else
-      install_helper
+  local Aur_Helpers=("yay" "paru")
+  local installed_counter=1
+  for i in "${Aur_Helpers[@]}"; do
+    if ! check_app_installed "${i}"; then
+      installed_counter=0
     fi
   done
+  if [[ ! "${installed_counter}" -eq 0 ]]; then
+    while true; do
+      tput_clean_text_area
+      text_box "To use this script, an AUR helper must be set."
+      if text_confirm "Do you have a AUR helper installed?"; then
+        while true; do
+          AUR_HELPER="$(compgen -c | sort -u | fzf_stylised)"
+          tput_clean_text_area
+          text_box_confirm "! ${AUR_HELPER} is set as your AUR helper. !"
+          option_submenus 'Ok' 'Redo'
+          case $choice in
+          'Ok') return 0 ;;
+          'Redo') break ;;
+          esac
+        done
+      else
+        install_helper
+      fi
+    done
+  fi
 }
 install_helper() {
   tput_clean_text_area
