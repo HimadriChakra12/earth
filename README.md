@@ -4,11 +4,11 @@
 A script to install apps with a simple toml file, automating your setups. 
 Inspired by the ML4W options script.
 
-### 📝 *-Requirements-*
+### 📝 *Requirements*
 - Arch linux system
 
 Thats it, and internet connection is all you need.
-### 💻 *-Usage-*
+### 💻 *Usage*
 You can download the script with:
 ```
 https://github.com/4urora3night/aurora-pac.git
@@ -31,13 +31,10 @@ To use the App installer feature, you need a {Name}.toml file containing AUR/pac
 install = ['cava', 'fzf']
 ```
 
-### *-Note-*
+### *Note*
 
 🧪 *Known bugs:*
-	
-- [x] Paru installer loops
-- [x] Missing fzf in dependencies
-- [x] Unicode icons don't render 
+ 
 - [ ] Flatpak apps can not be linked to a shortcut.
 
 ---
@@ -45,4 +42,4 @@ install = ['cava', 'fzf']
 - *Gum*  
 	➜ Styling
 - *ML4W options script* \
-	➜ Inspration and code borrowed
+	➜ Inspration and some code borrowed.
