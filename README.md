@@ -28,9 +28,11 @@ install = ['cava', 'fzf']
 ```
 ### Changelog
 
-> 🗓️ 2025-04-07
+> 🗓️ 07-04-2025
 > Added automatic AUR helper installer from legacy script.
 
+> 🗓️ 23-04-2025
+> Patched bugs.
 
 
 ### Notes
