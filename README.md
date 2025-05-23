@@ -38,7 +38,7 @@ install = ['cava', 'fzf']
 🧪 *Known bugs:*
  
 - [ ] Flatpak apps can not be linked to a shortcut.
-- [-] AUR helper not set automatically.
+
 ---
 ### *Thanks to:*
 - [*Gum*](https://github.com/charmbracelet/gum) 
