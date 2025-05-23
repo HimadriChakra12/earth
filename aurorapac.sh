@@ -13,7 +13,7 @@ fi
 
 # --  Functions  -- #
 install_dependencies() {
-  local dependencies=("fzf" "gum" "yq" "fd")
+  local dependencies=("fzf" "gum" "yq" "fd" "bat")
   local dependencies_install=()
   local update=1
   for i in "${dependencies[@]}"; do

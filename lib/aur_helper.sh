@@ -8,6 +8,8 @@ aur_helper_checks() {
   for i in "${Aur_Helpers[@]}"; do
     if ! check_app_installed "${i}"; then
       installed_counter=0
+      AUR_HELPER="${i}"
+      break
     fi
   done
   if [[ ! "${installed_counter}" -eq 0 ]]; then
