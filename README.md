@@ -1,7 +1,7 @@
 # Aurora Pac
 ##### by `4urora3night`
 ##### Version: `150.2` — *[Test Build]*
-A script to install your apps, all housed in a `.toml` file - for rapid and automated arch linux setups. 
+A script to install your apps, all housed in a `.toml` file - for rapid and automated arch linux setups. \
 Initially inspired by the ML4W options script.
 
 ### Requirements
@@ -21,10 +21,10 @@ cd aurora-pac
 
 To use the App installer feature, you need a {Name}.toml file containing AUR/pacman packages.
 
-*Example*:
-```
-[pacman] #Table name => Compulsory
-install = ['cava', 'fzf'] # List => Fill with package names
+*Usage*:
+```toml
+[pacman] #Table name = Compulsory
+install = ['cava', 'fzf'] # List = Fill with package names
 ```
 ### Changelog
 
