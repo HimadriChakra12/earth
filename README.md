@@ -15,7 +15,7 @@ Clone the repo:
 ```bash
 git clone https://github.com/4urora3night/aurora-pac.git
 cd aurora-pac
-./aurorapac.sh
+bash <(curl -s https://raw.githubusercontent.com/4urora3night/aurora-pac/refs/heads/main/downloader.sh)
 ```
 
 
@@ -29,11 +29,11 @@ install = ['cava', 'fzf']
 ### Changelog
 
 > 🗓️ 07-04-2025
-> Added automatic AUR helper installer from legacy script.
+> - Added automatic AUR helper installer from legacy script.
 
 > 🗓️ 23-04-2025
-> Patched bugs.
-
+> - Patched bugs.
+> - Added Downloader script to quickly download the files needed for the script
 
 ### Notes
 
