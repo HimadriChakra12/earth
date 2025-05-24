@@ -16,5 +16,5 @@ curl -O https://raw.githubusercontent.com/4urora3night/aurora-pac/refs/heads/mai
 curl -O https://raw.githubusercontent.com/4urora3night/aurora-pac/refs/heads/main/lib/tty-ui.sh
 curl -O https://raw.githubusercontent.com/4urora3night/aurora-pac/refs/heads/main/lib/utils.sh
 
-cd .. && cd ..
-rm downloader.sh
+
+
