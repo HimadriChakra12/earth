@@ -80,5 +80,5 @@ check_app_installed() {
 }
 update_sys() {
   "${AUR_HELPER}" -Syyu --noconfirm
-  flathub update -y
+  flatpak update -y
 }
