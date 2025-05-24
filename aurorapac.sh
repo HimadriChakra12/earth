@@ -1,4 +1,6 @@
 #!/bin/bash
+set -euo pipefail
+
 # -Import functions- #
 source './lib/settings.sh'
 source './lib/core.sh'
@@ -12,6 +14,12 @@ else
 fi
 
 # --  Functions  -- #
+cleanup() {
+  [[ -d yay ]] && rm -rf yay
+  [[ -d yay-bin ]] && rm -rf yay-bin
+  [[ -d paru ]] && rm -rf paru
+}
+
 install_dependencies() {
   local dependencies=("fzf" "gum" "yq" "fd" "bat")
   local dependencies_install=()
@@ -36,7 +44,7 @@ install_dependencies() {
 # --  Variable  -- #
 text_box_size=$(($(tput cols) - 4))
 config_toml=Null
-
+trap cleanup EXIT
 install_dependencies
 aur_helper_checks
 while true; do

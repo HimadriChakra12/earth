@@ -35,7 +35,7 @@ aur_helper_checks() {
 }
 install_helper() {
   tput_clean_text_area
-  text_box "This can offer to install a helper for you:\n - yay: prebuilt or to compile\n - paru : to compile\nor you can install one."
+  text_box "This can offer to install a helper for you:\n - yay: prebuilt or to compile\n - paru : to compile\nor you can manually install one."
   option_submenus 'yay' 'paru'
   case $choice in
   'yay') install_yay ;;
@@ -43,18 +43,24 @@ install_helper() {
   esac
 }
 install_yay() {
-  if text_confirm "Do you want to complie yay"; then
+  if text_confirm "Do you want to complie yay?"; then
     sudo pacman -S --needed git base-devel
-    git clone https://aur.archlinux.org/yay-bin.git
-    cd yay bin || return
-    makepkg -si
-    cd .. && rm -r yay-bin
-  else
-    sudo pacman -S --needed git base-devel
+    text_log "Cloning yay from AUR..."
     git clone https://aur.archlinux.org/yay.git
+    text_log "Building and installing yay..."
     cd yay || return
     makepkg -si
+    text_log "# Cleaning up..."
     cd .. && sudo rm -rf yay
+  else
+    sudo pacman -S --needed git base-devel
+    text_log "Cloning yay from AUR..."
+    git clone https://aur.archlinux.org/yay-bin.git
+    text_log "Installing yay..."
+    cd yay-bin || return
+    makepkg -si
+    text_log "Cleaning up..."
+    cd .. && rm -r yay-bin
   fi
 }
 install_paru() {

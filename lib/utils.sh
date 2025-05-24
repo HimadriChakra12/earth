@@ -46,6 +46,14 @@ text_error() {
     --align center --width ${text_box_size} --margin "0 1" \
     "${text}"
 }
+text_log() {
+  local text
+  text="$(echo -e "$1")"
+  gum style \
+    --foreground 3 \
+    --align center --width ${text_box_size} --margin "0 1" \
+    "${text}"
+}
 fzf_stylised() {
   fzf --style full \
     --border rounded \

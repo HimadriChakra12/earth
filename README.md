@@ -28,12 +28,16 @@ install = ['cava', 'fzf'] # List = Fill with package names
 ```
 ### Changelog
 
-> 🗓️ 07-04-2025
-> - Added automatic AUR helper installer from legacy script.
+> 🗓️ 24-04-2025
+> - AI suggested improvements
+> - Patched bugs
 
 > 🗓️ 23-04-2025
 > - Patched bugs.
 > - Added Downloader script to quickly download the files needed for the script
+
+> 🗓️ 07-04-2025
+> - Added automatic AUR helper installer from legacy script.
 
 ### Notes
 
