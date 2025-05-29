@@ -1,17 +1,31 @@
 #!/bin/bash
+<<<<<<< Updated upstream
+=======
+set -euo pipefail
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+>>>>>>> Stashed changes
 # -Import functions- #
-source './lib/settings.sh'
-source './lib/core.sh'
-source './lib/utils.sh'
-source './lib/app-installers.sh'
-source './lib/aur_helper.sh'
+
+source "${script_dir}/lib/settings.sh"
+source "${script_dir}/lib/app-installer.sh"
+source "${script_dir}/lib/utils.sh"
+source "${script_dir}/lib/aur-helper.sh"
+
 if [[ "$(tty)" == "/dev/tty"* ]]; then
-  source './lib/tty-ui.sh'
+  source "${script_dir}/lib/tty-ui.sh"
 else
-  source './lib/terminal-ui.sh'
+  source "${script_dir}/lib/terminal-ui.sh"
 fi
 
 # --  Functions  -- #
+<<<<<<< Updated upstream
+=======
+cleanup() {
+  [[ -d "${script_dir}/cache" ]] && rm -rf "${script_dir}/cache"
+}
+
+>>>>>>> Stashed changes
 install_dependencies() {
   local dependencies=("fzf" "gum" "yq" "fd")
   local dependencies_install=()
