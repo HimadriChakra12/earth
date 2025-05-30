@@ -1,4 +1,5 @@
 #!/bin/bash
+# by 4urora3night
 set -euo pipefail
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -21,7 +22,7 @@ cleanup() {
 }
 
 install_dependencies() {
-  local dependencies=("fzf" "gum" "yq" "fd")
+  local dependencies=("fzf" "gum" "yq" "fd" "bat")
   local dependencies_install=()
   local update=1
   for i in "${dependencies[@]}"; do
@@ -44,6 +45,7 @@ install_dependencies() {
 # --  Variable  -- #
 text_box_size=$(($(tput cols) - 4))
 config_toml=Null
+trap cleanup EXIT
 
 install_dependencies
 aur_helper_checks

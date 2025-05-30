@@ -53,6 +53,23 @@ text_confirm() {
   gum confirm \
     "$1" --prompt.foreground 7 --selected.background 2
 }
+text_error() {
+  local text
+  text="$(echo -e "$1")"
+  gum style \
+    --foreground 1 --border-foreground 1 --border normal \
+    --align center --width ${text_box_size} --margin "0 1" \
+    "${text}"
+}
+text_log() {
+  local text
+  text="$(echo -e "$1")"
+  gum style \
+    --foreground 3 \
+    --align center --width ${text_box_size} --margin "0 1" \
+    "${text}"
+}
+
 fzf_stylised() {
   fzf --style full \
     --border rounded \
@@ -88,5 +105,5 @@ flatpak_install() {
 
 update_sys() {
   "${AUR_HELPER}" -Syyu --noconfirm
-  flathub update -y
+  flatpak update -y
 }

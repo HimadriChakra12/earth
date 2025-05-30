@@ -84,6 +84,7 @@ install_paru() {
 
   setup_cache
   cd "${script_dir}/cache" || return 1
+
   text_log "Cloning paru from AUR..."
   git clone https://aur.archlinux.org/paru.git
   cd paru || return

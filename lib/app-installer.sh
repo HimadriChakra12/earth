@@ -1,10 +1,8 @@
 #!/bin/bash
 # by 4urora3night
 
-# UNTESTED
-# To finish pac and flatpak installers
-
 # -- UI -- #
+
 aurora_unpac() {
   select_file
 }
@@ -18,7 +16,7 @@ select_file() {
   cd "$script_dir" || return 1
 
   if [[ -z "$config_toml" || ! -f "$config_toml" ]]; then
-    text_box "X No valid TOML file selected. Exiting."
+    text_box "ERROR No valid TOML file selected. Exiting."
     return 1
   fi
 
