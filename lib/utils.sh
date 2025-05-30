@@ -71,7 +71,6 @@ fzf_stylised_preview()
     --preview 'bat --style=numbers --color=always {}'  
 }
 
-<<<<<<< Updated upstream
 
 #-------------------------------------------
 check_app_installed() {
@@ -80,12 +79,10 @@ check_app_installed() {
   else
     return 1
   fi
-=======
 # -- Application installers -- #
 
 pacman_install() {
   sudo pacman -S "${@}" --noconfirm
->>>>>>> Stashed changes
 }
 flatpak_install() {
   flatpak install flathub -y "${1}"

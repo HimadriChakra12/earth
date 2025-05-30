@@ -1,10 +1,7 @@
 #!/bin/bash
-<<<<<<< Updated upstream
-=======
 set -euo pipefail
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
->>>>>>> Stashed changes
 # -Import functions- #
 
 source "${script_dir}/lib/settings.sh"
@@ -19,8 +16,6 @@ else
 fi
 
 # --  Functions  -- #
-<<<<<<< Updated upstream
-=======
 cleanup() {
   [[ -d "${script_dir}/cache" ]] && rm -rf "${script_dir}/cache"
 }
