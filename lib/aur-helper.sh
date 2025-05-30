@@ -6,26 +6,6 @@
 aur_helper_checks() {
   clear
   title
-<<<<<<< Updated upstream:lib/aur_helper.sh
-  while true; do
-    tput_clean_text_area
-    text_box "To use this script, an AUR helper must be set."
-    if text_confirm "Do you have a AUR helper installed?"; then
-      while true; do
-        AUR_HELPER="$(compgen -c | sort -u | fzf_stylised)"
-        tput_clean_text_area
-        text_box_confirm "! $AUR_HELPER is set as your AUR helper. !"
-        option_submenus 'Ok' 'Redo'
-        case $choice in
-        'Ok') return 0 ;;
-        'Redo') break ;;
-        esac
-      done
-    else
-      install_helper
-    fi
-  done
-=======
   local Aur_Helpers=("yay" "paru")
   local installed_counter=1
 
@@ -57,7 +37,6 @@ aur_helper_checks() {
       fi
     done
   fi
->>>>>>> Stashed changes:lib/aur-helper.sh
 }
 
 install_helper() {
@@ -73,20 +52,6 @@ install_helper() {
 # -- Automated AUR helper installers -- #
 
 install_yay() {
-<<<<<<< Updated upstream:lib/aur_helper.sh
-  if text_confirm "Do you want to complie yay"; then
-    sudo pacman -S --needed git base-devel
-    git clone https://aur.archlinux.org/yay-bin.git
-    cd yay bin || return
-    makepkg -si
-    cd .. && rm -r yay-bin
-  else
-    sudo pacman -S --needed git base-devel
-    git clone https://aur.archlinux.org/yay.git
-    cd yay || return
-    makepkg -si
-    cd .. && sudo rm -rf yay
-=======
   if check_app_installed "git"; then
     sudo pacman -S --needed --noconfirm git base-devel
   fi
@@ -105,7 +70,6 @@ install_yay() {
     git clone https://aur.archlinux.org/yay-bin.git
     text_log "Installing yay..."
     cd yay-bin || return 1
->>>>>>> Stashed changes:lib/aur-helper.sh
   fi
 
   makepkg -si --noconfirm

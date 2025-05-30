@@ -53,24 +53,21 @@ text_confirm() {
   gum confirm \
     "$1" --prompt.foreground 7 --selected.background 2
 }
-fzf_stylised() 
-{
-   fzf --style full \
+fzf_stylised() {
+  fzf --style full \
     --border rounded \
     --margin 0,1 \
     --height 20% \
     --border-label ' Package Finder ' --input-label ' Input ' --header-label ' File Type '
 }
-fzf_stylised_preview() 
-{
-   fzf --style full \
+fzf_stylised_preview() {
+  fzf --style full \
     --border rounded \
     --margin 0,1 \
     --height 20% \
-    --border-label ' Toml Finder ' --input-label ' Input ' --header-label ' File Type '\
-    --preview 'bat --style=numbers --color=always {}'  
+    --border-label ' Toml Finder ' --input-label ' Input ' --header-label ' File Type ' \
+    --preview 'bat --style=numbers --color=always {}'
 }
-
 
 #-------------------------------------------
 check_app_installed() {
@@ -79,6 +76,7 @@ check_app_installed() {
   else
     return 1
   fi
+}
 # -- Application installers -- #
 
 pacman_install() {

@@ -20,7 +20,6 @@ cleanup() {
   [[ -d "${script_dir}/cache" ]] && rm -rf "${script_dir}/cache"
 }
 
->>>>>>> Stashed changes
 install_dependencies() {
   local dependencies=("fzf" "gum" "yq" "fd")
   local dependencies_install=()
