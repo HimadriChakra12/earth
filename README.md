@@ -8,7 +8,7 @@ Stuff here is experimental, nothing might work, and bugs.
 
 # Aurora Pac
 ##### by `4urora3night`
-##### Version: `151.0` — *[Test Build]*
+##### Version: `151.0` — *[Test]*
 A script to install your apps, all housed in a `.toml` file - for rapid and automated arch linux setups. \
 Initially inspired by the ML4W options script.
 
@@ -37,6 +37,11 @@ install = ['cava', 'fzf'] # List = Fill with package names
 ### Changelog
 
 > 🗓️ 24-04-2025
+> - [NEW] Flatpak apps from flathub can now be installed
+> - Refactored code 
+> - Patched bugs
+
+> 🗓️ 24-04-2025
 > - AI suggested improvements
 > - Patched bugs
 
@@ -49,9 +54,10 @@ install = ['cava', 'fzf'] # List = Fill with package names
 
 ### Notes
 
-🧪 *Known bugs:*
+🧪 *To Do:*
  
 - [ ] Flatpak apps can not be linked to a shortcut.
+- [ ] Add section for flatpak apps on usage
 
 ---
 ### *Thanks to:*
