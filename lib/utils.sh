@@ -104,6 +104,10 @@ flatpak_install() {
 }
 
 update_sys() {
+  tput_clean_text_area
+  text_box "Updating system..."
+  text_log "Pacman updating..."
   "${AUR_HELPER}" -Syyu --noconfirm
+  text_log "flatpak updating..."
   flatpak update -y
 }

@@ -9,7 +9,7 @@ aurora_unpac() {
 
 select_file() {
   tput_clean_text_area
-  text_box 'Time to unpack your apps.\nStart by selecting your toml configuration file'
+  text_box 'Time to unpack your apps.\nStart by selecting your toml configuration file to unload.'
 
   cd "$script_dir/.." || return 1
   config_toml=$(fd -e toml -x realpath {} | fzf_stylised_preview)
@@ -63,6 +63,7 @@ installer() {
     ".flatpak.install") install_flatpak_apps ;;
     esac
   done
+  text_log "Complete :)"
 }
 
 install_pac_apps() {
@@ -71,6 +72,7 @@ install_pac_apps() {
   mapfile -t packages < <(tomlq -r '.pacman.install[]' "$config_toml")
   for i in "${packages[@]}"; do
     pacman_install "$i"
+
   done
 }
 

@@ -5,7 +5,6 @@
 
 aur_helper_checks() {
   clear
-  title
   local Aur_Helpers=("yay" "paru")
   local installed_counter=1
 
@@ -18,6 +17,7 @@ aur_helper_checks() {
   done
 
   if [[ ! "${installed_counter}" -eq 0 ]]; then
+    title
     while true; do
       tput_clean_text_area
       text_box "To use this script, an AUR helper must be set."
