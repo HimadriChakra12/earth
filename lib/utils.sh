@@ -1,9 +1,24 @@
 #!/bin/bash
 # by 4urora3night
 
+# -- General Utilites -- #
+
 tput_clean_text_area() {
   tput cup 12 0
   tput ed
+}
+
+check_app_installed() {
+  if ! command -v "$1" &>/dev/null; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+setup_cache() {
+  text_log "Creating cache folder for temporary files..."
+  mkdir -p "${script_dir}/cache"
 }
 
 # --  Output text format  -- #
@@ -28,11 +43,11 @@ text_box() {
 }
 text_box_confirm() {
   local text
-  text="$(echo -e "$@")"
+  text="$(echo -e "$1")"
   gum style \
     --foreground 7 --border-foreground 1 --border normal \
     --align left --width "${text_box_size}" --margin "0 1" --padding "1 1" \
-    " ${text}"
+    "${text}"
 }
 text_confirm() {
   gum confirm \
@@ -54,6 +69,7 @@ text_log() {
     --align center --width ${text_box_size} --margin "0 1" \
     "${text}"
 }
+
 fzf_stylised() {
   fzf --style full \
     --border rounded \
@@ -78,7 +94,20 @@ check_app_installed() {
     return 1
   fi
 }
+# -- Application installers -- #
+
+pacman_install() {
+  sudo pacman -S "${@}" --noconfirm
+}
+flatpak_install() {
+  flatpak install flathub -y "${1}"
+}
+
 update_sys() {
+  tput_clean_text_area
+  text_box "Updating system..."
+  text_log "Pacman updating..."
   "${AUR_HELPER}" -Syyu --noconfirm
+  text_log "flatpak updating..."
   flatpak update -y
 }
