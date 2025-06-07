@@ -34,26 +34,13 @@ To use the App installer feature, you need a {Name}.toml file containing AUR/pac
 [pacman] #Table name = Compulsory
 install = ['cava', 'fzf'] # List = Fill with package names
 ```
-### Changelog
+
+#### Changelog
 
 > 🗓️ 31 May 2025
 > - System update feature now displays simple logs
 
-> 🗓️ 24-04-2025
-> - Flatpak apps from flathub can now be installed
-> - Refactored code 
-> - Patched bugs
-
-> 🗓️ 24-04-2025
-> - AI suggested improvements
-> - Patched bugs
-
-> 🗓️ 23-04-2025
-> - Patched bugs.
-> - Added Downloader script to quickly download the files needed for the script
-
-> 🗓️ 07-04-2025
-> - Added automatic AUR helper installer from legacy script.
+older logs can be found in changelog.md
 
 ### Notes
 
