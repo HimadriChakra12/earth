@@ -1,6 +1,14 @@
+# [This is a test branch] 
+This script provides the user with options to install apps on their arch linux computer.
+It is designed to be be used with ML4W.
+Inspired by ml4w-options :)
+Stuff here is experimental, nothing might work, and bugs.
+
+- Syncing repos
+
 # Aurora Pac
 ##### by `4urora3night`
-##### Version: `152` — *[Test]*
+##### Version: `151.1` — *[Test]*
 A script to install your apps, all housed in a `.toml` file - for rapid and automated arch linux setups. \
 Initially inspired by the ML4W options script.
 
@@ -48,3 +56,4 @@ When running the script, if a error occurs the script will exit so logs are visi
 	➜ All the eyecandy.
 - *ML4W options script* \
 	➜  For inspiration and borrowed code.
+	
