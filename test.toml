@@ -1,2 +1,4 @@
 [pacman]
-install = ['cava','paru']
+install = ['cava']
+[flatpak]
+install = ['md.obsidian.Obsidian', 'app.zen_browser.zen']

@@ -27,12 +27,16 @@ cd aurora-pac
 ```
 
 
-To use the App installer feature, you need a {Name}.toml file containing AUR/pacman packages.
+To use the App installer feature, you need a {Name}.toml file containing AUR/pacman and/or flatpak packages.
 
-*Usage*:
+*Toml*:
 ```toml
-[pacman] #Table name = Compulsory
-install = ['cava', 'fzf'] # List = Fill with package names
+[pacman] 
+#Table name = Compulsory
+install = ['cava', 'fzf'] 
+# List = Fill with package names
+[flatpak]
+install = ['md.obsidian.Obsidian', 'app.zen_browser.zen']
 ```
 
 #### Changelog
@@ -44,10 +48,7 @@ older logs can be found in changelog.md
 
 ### Notes
 
-🧪 *To Do:*
- 
--  Flatpak apps can not be linked to a shortcut.
--  Add section for flatpak apps on usage
+When running the script, if a error occurs the script will exit so logs are visible.
 
 ---
 ### *Thanks to:*
