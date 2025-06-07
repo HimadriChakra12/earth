@@ -1,6 +1,6 @@
 # Aurora Pac
 ##### by `4urora3night`
-##### Version: `150.3` — *[Test Build]*
+##### Version: `152` — *[Test]*
 A script to install your apps, all housed in a `.toml` file - for rapid and automated arch linux setups. \
 Initially inspired by the ML4W options script.
 
@@ -19,31 +19,28 @@ cd aurora-pac
 ```
 
 
-To use the App installer feature, you need a {Name}.toml file containing AUR/pacman packages.
+To use the App installer feature, you need a {Name}.toml file containing AUR/pacman and/or flatpak packages.
 
-*Usage*:
+*Toml*:
 ```toml
-[pacman] #Table name = Compulsory
-install = ['cava', 'fzf'] # List = Fill with package names
+[pacman] 
+#Table name = Compulsory
+install = ['cava', 'fzf'] 
+# List = Fill with package names
+[flatpak]
+install = ['md.obsidian.Obsidian', 'app.zen_browser.zen']
 ```
-### Changelog
 
-> 🗓️ 24-04-2025
-> - AI suggested improvements
-> - Patched bugs
+#### Changelog
 
-> 🗓️ 23-04-2025
-> - Patched bugs.
-> - Added Downloader script to quickly download the files needed for the script
+> 🗓️ 31 May 2025
+> - System update feature now displays simple logs
 
-> 🗓️ 07-04-2025
-> - Added automatic AUR helper installer from legacy script.
+older logs can be found in changelog.md
 
 ### Notes
 
-🧪 *Known bugs:*
- 
-- [ ] Flatpak apps can not be linked to a shortcut.
+When running the script, if a error occurs the script will exit so logs are visible.
 
 ---
 ### *Thanks to:*
@@ -51,4 +48,3 @@ install = ['cava', 'fzf'] # List = Fill with package names
 	➜ All the eyecandy.
 - *ML4W options script* \
 	➜  For inspiration and borrowed code.
-	
