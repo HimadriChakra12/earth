@@ -8,13 +8,9 @@ chmod +x aurorapac.sh
 
 cd lib
 
-curl -O https://raw.githubusercontent.com/4urora3night/aurora-pac/refs/heads/main/lib/app-installers.sh
-curl -O https://raw.githubusercontent.com/4urora3night/aurora-pac/refs/heads/main/lib/aur_helper.sh
-curl -O https://raw.githubusercontent.com/4urora3night/aurora-pac/refs/heads/main/lib/core.sh
+curl -O https://raw.githubusercontent.com/4urora3night/aurora-pac/refs/heads/main/lib/app-installer.sh
+curl -O https://raw.githubusercontent.com/4urora3night/aurora-pac/refs/heads/main/lib/aur-helper.sh
 curl -O https://raw.githubusercontent.com/4urora3night/aurora-pac/refs/heads/main/lib/settings.sh
 curl -O https://raw.githubusercontent.com/4urora3night/aurora-pac/refs/heads/main/lib/terminal-ui.sh
 curl -O https://raw.githubusercontent.com/4urora3night/aurora-pac/refs/heads/main/lib/tty-ui.sh
 curl -O https://raw.githubusercontent.com/4urora3night/aurora-pac/refs/heads/main/lib/utils.sh
-
-
-
