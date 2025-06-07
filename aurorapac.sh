@@ -1,23 +1,24 @@
 #!/bin/bash
+# by 4urora3night
 set -euo pipefail
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # -Import functions- #
-source './lib/settings.sh'
-source './lib/core.sh'
-source './lib/utils.sh'
-source './lib/app-installers.sh'
-source './lib/aur_helper.sh'
+
+source "${script_dir}/lib/settings.sh"
+source "${script_dir}/lib/app-installer.sh"
+source "${script_dir}/lib/utils.sh"
+source "${script_dir}/lib/aur-helper.sh"
+
 if [[ "$(tty)" == "/dev/tty"* ]]; then
-  source './lib/tty-ui.sh'
+  source "${script_dir}/lib/tty-ui.sh"
 else
-  source './lib/terminal-ui.sh'
+  source "${script_dir}/lib/terminal-ui.sh"
 fi
 
 # --  Functions  -- #
 cleanup() {
-  [[ -d yay ]] && rm -rf yay
-  [[ -d yay-bin ]] && rm -rf yay-bin
-  [[ -d paru ]] && rm -rf paru
+  [[ -d "${script_dir}/cache" ]] && rm -rf "${script_dir}/cache"
 }
 
 install_dependencies() {
@@ -45,10 +46,12 @@ install_dependencies() {
 text_box_size=$(($(tput cols) - 4))
 config_toml=Null
 trap cleanup EXIT
+
 install_dependencies
 aur_helper_checks
 while true; do
-  tput_clean_text_area
+  clear
+  title
   option_home '(App Installer)' '(Settings)'
   case $choice in
   "(Settings)") settings ;;
