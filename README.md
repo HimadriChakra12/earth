@@ -32,6 +32,9 @@ install = ['md.obsidian.Obsidian', 'app.zen_browser.zen']
 ```
 
 #### Changelog
+> 🗓️ 19 Jun 2025
+> - Minor bug fixes
+
 > 🗓️ 08 Jun 2025
 > - Bug Fixes
 
