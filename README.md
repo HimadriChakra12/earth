@@ -1,6 +1,6 @@
 # Aurora Pac
 ##### by `4urora3night`
-##### Version: `152` — *[Test]*
+##### Version: `152.2` — *[Test]*
 A script to install your apps, all housed in a `.toml` file - for rapid and automated arch linux setups. \
 Initially inspired by the ML4W options script.
 
@@ -32,9 +32,11 @@ install = ['md.obsidian.Obsidian', 'app.zen_browser.zen']
 ```
 
 #### Changelog
+> 🗓️ 19 Jun 2025
+> - Minor bug fixes
 
-> 🗓️ 31 May 2025
-> - System update feature now displays simple logs
+> 🗓️ 08 Jun 2025
+> - Bug Fixes
 
 older logs can be found in changelog.md
 
