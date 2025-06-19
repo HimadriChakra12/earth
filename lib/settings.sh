@@ -3,7 +3,7 @@
 
 # -Functions- #
 settings() {
-  option_submenus "[Change Shell]" "ther"
+  option_submenus "[Change Shell]"
   case "$choice" in
   "[Change Shell]") change_shell ;;
   esac
