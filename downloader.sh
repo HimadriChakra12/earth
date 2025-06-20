@@ -3,7 +3,7 @@ mkdir -p earth
 mkdir -p earth/lib
 cd earth
 
-curl -O https://raw.githubusercontent.com/4urora3night/earth/refs/heads/main/aurorapac.sh
+curl -O https://raw.githubusercontent.com/4urora3night/earth/refs/heads/main/earth.sh
 chmod +x earth.sh
 
 cd lib
