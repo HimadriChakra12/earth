@@ -1,4 +1,4 @@
-# Aurora Pac
+# Project Earth
 ##### by `4urora3night`
 ##### Version: `152.2` — *[Test]*
 A script to install your apps, all housed in a `.toml` file - for rapid and automated arch linux setups. \
@@ -13,7 +13,7 @@ You can download the script with:
 Clone the repo:
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/4urora3night/aurora-pac/refs/heads/main/downloader.sh)
+bash <(curl -s "https://raw.githubusercontent.com/4urora3night/earth/refs/heads/main/downloader.sh")
 cd aurora-pac
 ./aurorapac.sh
 ```
@@ -32,6 +32,10 @@ install = ['md.obsidian.Obsidian', 'app.zen_browser.zen']
 ```
 
 #### Changelog
+
+> 🗓️ 20 Jun 2025
+> - Space themed rename
+
 > 🗓️ 19 Jun 2025
 > - Minor bug fixes
 
