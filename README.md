@@ -14,8 +14,8 @@ Clone the repo:
 
 ```bash
 bash <(curl -s "https://raw.githubusercontent.com/4urora3night/earth/refs/heads/main/downloader.sh")
-cd aurora-pac
-./aurorapac.sh
+cd earth
+./earth.sh
 ```
 
 
