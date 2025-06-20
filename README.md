@@ -13,7 +13,7 @@ You can download the script with:
 Clone the repo:
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/4urora3night/aurora-pac/refs/heads/main/downloader.sh)
+bash <(curl -s "https://raw.githubusercontent.com/4urora3night/earth/refs/heads/main/downloader.sh")
 cd aurora-pac
 ./aurorapac.sh
 ```
