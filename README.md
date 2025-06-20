@@ -34,6 +34,7 @@ install = ['md.obsidian.Obsidian', 'app.zen_browser.zen']
 #### Changelog
 
 > 🗓️ 20 Jun 2025
+> - Minor bug fixes
 > - Space themed rename
 
 > 🗓️ 19 Jun 2025
