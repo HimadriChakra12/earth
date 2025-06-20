@@ -22,7 +22,7 @@ option_home ()
   --limit 1 --header "" --cursor "   • "  --cursor.foreground 4 \
   "${option_list[@]}" '(-Update-)' '[Exit]')
   case $choice in
-    "(-Update-)") update;;
+    "(-Update-)") update_sys;;
     "[Exit]") clear && exit;;
   esac 
 }
