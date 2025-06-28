@@ -1,5 +1,15 @@
 ### Changelog
 
+> 🗓️ 20 Jun 2025
+> - Minor bug fixes
+> - Space themed rename
+
+> 🗓️ 19 Jun 2025
+> - Minor bug fixes
+
+> 🗓️ 08 Jun 2025
+> - Bug Fixes
+
 > 🗓️ 31 May 2025
 > - System update feature now displays simple logs.
 

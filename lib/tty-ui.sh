@@ -20,8 +20,10 @@ option_home ()
   choice=$(\
   gum choose \
   --limit 1 --header "" --cursor "   • "  --cursor.foreground 4 \
-  "${option_list[@]}" '(-Update-)' '[Exit]')
+  "${option_list[@]}" '(App Installer)' '(Settings)' '(-Update-)' '[Exit]')
   case $choice in
+    "(Settings)") settings ;;
+    "(App Installer)") aurora_unpac ;;
     "(-Update-)") update_sys;;
     "[Exit]") clear && exit;;
   esac 
