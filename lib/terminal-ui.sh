@@ -6,7 +6,7 @@ option_submenus() {
   local option_list=("$@")
   choice=$(
     gum choose \
-      --limit 1 --header "" --cursor "  ➜ " --cursor.foreground 4 \
+      --limit 1 --header "" --cursor "  ➜ " --cursor.foreground 2 \
       "${option_list[@]}" 'Back [↩]' 'Exit [⟹]'
   )
   case $choice in
@@ -18,7 +18,7 @@ option_home() {
   local option_list=("$@")
   choice=$(
     gum choose \
-      --limit 1 --header "" --cursor "  ➜ " --cursor.foreground 4 \
+      --limit 1 --header "" --cursor "  ➜ " --cursor.foreground 2 \
       "${option_list[@]}" '(App Installer)' '(Settings)' 'Update 󰚰 ' 'Exit 󰈆 '
   )
   case $choice in

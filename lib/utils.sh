@@ -4,7 +4,7 @@
 # -- General Utilites -- #
 
 tput_clean_text_area() {
-  tput cup 12 0
+  tput cup 13 0
   tput ed
 }
 
