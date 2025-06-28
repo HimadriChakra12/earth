@@ -52,9 +52,5 @@ aur_helper_checks
 while true; do
   clear
   title
-  option_home '(App Installer)' '(Settings)'
-  case $choice in
-  "(Settings)") settings ;;
-  "(App Installer)") aurora_unpac ;;
-  esac
+  option_home 
 done

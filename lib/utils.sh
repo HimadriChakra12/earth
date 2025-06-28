@@ -26,12 +26,13 @@ title() {
   gum style \
     --foreground 4 --border-foreground 2 --border double \
     --align center --width "${text_box_size}" --margin "0 1" --padding "2 0" \
-    "______         _     _____          _        _ _ 
-| ___ \       | |   |_   _|        | |      | | |
-| |_/ /__  ___| |_    | | _ __  ___| |_ __ _| | |
-|  __/ _ \/ __| __|   | || '_ \/ __| __/ _\` | | |
-| | | (_) \__ \ |_   _| || | | \__ \ || (_| | | |
-\_|  \___/|___/\__|  \___/_| |_|___/\__\__,_|_|_|"
+    "███████╗ █████╗ ██████╗ ████████╗██╗  ██╗
+██╔════╝██╔══██╗██╔══██╗╚══██╔══╝██║  ██║
+█████╗  ███████║██████╔╝   ██║   ███████║
+██╔══╝  ██╔══██║██╔══██╗   ██║   ██╔══██║
+███████╗██║  ██║██║  ██║   ██║   ██║  ██║
+╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝
+                                         "
 }
 text_box() {
   local text
@@ -51,7 +52,7 @@ text_box_confirm() {
 }
 text_confirm() {
   gum confirm \
-    "$1" --prompt.foreground 7 --selected.background 2
+    " $1" --prompt.foreground 7 --selected.background 2
 }
 text_error() {
   local text
@@ -105,9 +106,12 @@ flatpak_install() {
 
 update_sys() {
   tput_clean_text_area
-  text_box "Updating system..."
-  text_log "Pacman updating..."
-  "${AUR_HELPER}" -Syyu --noconfirm
-  text_log "flatpak updating..."
-  flatpak update -y
+  text_box_confirm "Begin full Update?"   
+  if text_confirm "Confirm"; then
+    text_box "Updating system..."
+    text_log "Pacman updating..."
+    "${AUR_HELPER}" -Syyu --noconfirm
+    text_log "flatpak updating..."
+    flatpak update -y
+  fi
 }

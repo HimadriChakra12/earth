@@ -1,6 +1,6 @@
 # Project Earth
 ##### by `4urora3night`
-##### Version: `152.2` — *[Test]*
+##### Version: `152.3` — *[Beta]*
 A script to install your apps, all housed in a `.toml` file - for rapid and automated arch linux setups. \
 Initially inspired by the ML4W options script.
 
@@ -33,14 +33,9 @@ install = ['md.obsidian.Obsidian', 'app.zen_browser.zen']
 
 #### Changelog
 
-> 🗓️ 20 Jun 2025
-> - Space themed rename
-
-> 🗓️ 19 Jun 2025
-> - Minor bug fixes
-
-> 🗓️ 08 Jun 2025
-> - Bug Fixes
+> 🗓️ 28 Jun 2025
+> - UI improvement
+> - refactored code
 
 older logs can be found in changelog.md
 
