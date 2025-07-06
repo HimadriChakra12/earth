@@ -31,6 +31,18 @@ install = ['cava', 'fzf']
 install = ['md.obsidian.Obsidian', 'app.zen_browser.zen']
 ```
 
+The TOML file can be placed in the level above and _all_ levels below the the Project Earth folder.
+For example:
+```
+📁 Home
+∟ 📄 {Your TOML File}.toml
+∟ 📁 earth
+  ∟ 📄 {Another place your TOML File can live}.toml
+  ∟ 📁 lib
+    ∟ 📄 {Here also can your TOML File stay}.toml
+  ∟ 📄 earth.sh
+```
+
 #### Changelog
 
 > 🗓️ 28 Jun 2025
