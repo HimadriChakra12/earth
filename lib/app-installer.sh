@@ -12,7 +12,7 @@ select_file() {
   text_box 'Time to unpack your apps.\nStart by selecting your toml configuration file to unload.'
 
   cd "$script_dir/.." || return 1
-  config_toml=$(fd -e toml -x realpath {} | fzf_stylised_preview)
+  config_toml=$(fd -H -e toml -x realpath {} | fzf_stylised_preview)
   cd "$script_dir" || return 1
 
   if [[ -z "$config_toml" || ! -f "$config_toml" ]]; then
