@@ -84,24 +84,27 @@ else
 # -- Installers -- #
 
 installer() {
-    tput_clean_text_area
-    for i in "${table_found_names[@]}"; do
-
-        if command -v pacman &>/dev/null; then
+    if command -v pacman &>/dev/null; then
+        tput_clean_text_area
+        for i in "${table_found_names[@]}"; do
             case "${i}" in
                 ".pacman.install") install_pac_apps ;;
                 ".flatpak.install") install_flatpak_apps ;;
             esac
 
-        elif command -v apt &>/dev/null; then
+        done
+    elif command -v apt &>/dev/null; then
+        tput_clean_text_area
+        for i in "${table_found_names[@]}"; do
             case "${i}" in
-                ".apt.install") install_pac_apps ;;
+                ".pacman.install") install_pac_apps ;;
                 ".flatpak.install") install_flatpak_apps ;;
             esac
-        fi
+        done 
+    fi
 
-    done
-    text_log "Complete :)"
+done
+text_log "Complete :)"
 }
 
 install_pac_apps() {
