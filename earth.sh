@@ -26,12 +26,13 @@ install_dependencies() {
         local dependencies=("fzf" "gum" "yq" "fd" "bat" "flatpak")
     fi
     if command -v apt &>/dev/null; then
+        sudo apt install curl gnupg wget
         echo "Adding yq Repo source"
         latest_yq=$(curl -s https://api.github.com/repos/mikefarah/yq/releases/latest | grep "browser_download_url" | grep "amd64.deb" | cut -d '"' -f 4)
         wget "$latest_yq" -O yq.deb
         latest_gum=$(curl -s https://api.github.com/repos/charmbracelet/gum/releases/latest | grep "browser_download_url" | grep ".deb" | cut -d '"' -f 4)
         wget "$latest_gum" -O gum.deb
-        local dependencies=("yq.deb" "gum.deb" "fzf" "fd" "bat" "flatpak" "curl" "gnupg" "wget")
+        local dependencies=("yq.deb" "gum.deb" "fzf" "fd" "bat" "flatpak")
     fi
   local dependencies_install=()
   local update=1
