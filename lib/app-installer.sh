@@ -23,7 +23,7 @@ select_file() {
   text_box_confirm "Is ${config_toml} the right file?"
   if command -v pacman &>/dev/null; then
       if text_confirm "Confirm"; then
-          local table_names=(".pacman.install" ".flatpak.install" ".apt.install")
+          local table_names=(".pacman.install" ".flatpak.install")
           table_found_names=()
 
           for i in "${table_names[@]}"; do
@@ -44,7 +44,7 @@ select_file() {
 
       elif command -v apt &>/dev/null; then
           if text_confirm "Confirm"; then
-              local table_names=(".pacman.install" ".flatpak.install" ".apt.install")
+              local table_names=(".flatpak.install" ".apt.install")
               table_found_names=()
 
               if command -v pacman &>/dev/null; then
