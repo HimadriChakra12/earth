@@ -36,9 +36,6 @@ select_file() {
                           table_found_names+=("${i}")
                       fi
                   fi
-                  if [[ ${i} == ".apt.install" ]]; then
-                      break
-                  fi
               fi
           done
       fi
@@ -83,25 +80,14 @@ else
 # -- Installers -- #
 
 installer() {
-    if command -v pacman &>/dev/null; then
-        tput_clean_text_area
-        for i in "${table_found_names[@]}"; do
-            case "${i}" in
-                ".pacman.install") install_pac_apps ;;
-                ".flatpak.install") install_flatpak_apps ;;
-            esac
-
-        done
-    elif command -v apt &>/dev/null; then
-        tput_clean_text_area
-        for i in "${table_found_names[@]}"; do
-            case "${i}" in
-                ".pacman.install") install_pac_apps ;;
-                ".flatpak.install") install_flatpak_apps ;;
-            esac
-        done 
-    fi
-text_log "Complete :)"
+  tput_clean_text_area
+  for i in "${table_found_names[@]}"; do
+    case "${i}" in
+    ".pacman.install") install_pac_apps ;;
+    ".flatpak.install") install_flatpak_apps ;;
+    esac
+  done
+  text_log "Complete :)"
 }
 
 install_pac_apps() {
