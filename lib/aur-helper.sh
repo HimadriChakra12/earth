@@ -64,7 +64,6 @@ install_yay() {
     git clone https://aur.archlinux.org/yay.git
     text_log "Building and installing yay..."
     cd yay || return 1
-    makepkg -si --noconfirm
   else
     text_log "Cloning yay from AUR..."
     git clone https://aur.archlinux.org/yay-bin.git
