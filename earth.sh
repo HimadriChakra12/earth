@@ -25,7 +25,7 @@ install_dependencies() {
     if command -v pacman &>/dev/null; then
         local dependencies=("fzf" "gum"  "fd" "bat" "flatpak")
     elif command -v apt &>/dev/null; then
-        local dependencies=("gum" "fzf" "fd-find" "bat" "flatpak")
+        local dependencies=("gum" "fzf" "bat" "flatpak" "fd-find")
     fi
   local dependencies_install=()
   local update=1
