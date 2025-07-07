@@ -1,3 +1,5 @@
 [pacman]
 install = ['cava']
 
+[apt]
+install = ['exa']
