@@ -27,11 +27,12 @@ install_dependencies() {
     elif command -v apt &>/dev/null; then
         sudo apt install curl gnupg wget
         echo "Adding yq Repo source"
-        latest_yq=$(curl -s https://api.github.com/repos/mikefarah/yq/releases/latest | grep "browser_download_url" | grep "amd64.deb" | cut -d '"' -f 4)
-        wget "$latest_yq" -O yq.deb
-        latest_gum=$(curl -s https://api.github.com/repos/charmbracelet/gum/releases/latest | grep "browser_download_url" | grep ".deb" | cut -d '"' -f 4)
-        wget "$latest_gum" -O gum.deb
-        local dependencies=("yq.deb" "gum.deb" "fzf" "fd" "bat" "flatpak")
+        wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq &&\
+            chmod +x /usr/local/bin/yq
+        sudo mkdir -p /etc/apt/keyrings
+        curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
+        echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
+        local dependencies=("gum" "fzf" "fd" "bat" "flatpak")
     fi
   local dependencies_install=()
   local update=1

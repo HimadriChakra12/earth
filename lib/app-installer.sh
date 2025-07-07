@@ -2,6 +2,11 @@
 # by 4urora3night
 
 # -- UI -- #
+if command -v pacman &>/dev/null; then
+    os= aur
+elif command -v apt &>/dev/null; then
+    os= apt
+fi
 
 aurora_unpac() {
   select_file
