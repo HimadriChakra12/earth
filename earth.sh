@@ -20,19 +20,22 @@ fi
 cleanup() {
   [[ -d "${script_dir}/cache" ]] && rm -rf "${script_dir}/cache"
 }
+adding_yq_gum(){
+    sudo apt install curl gnupg wget
+    echo "Adding yq Repo source"
+    wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq &&\
+        chmod +x /usr/local/bin/yq
+    sudo mkdir -p /etc/apt/keyrings
+    curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
+    echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
+}
 
 install_dependencies() {
     if command -v pacman &>/dev/null; then
         local dependencies=("fzf" "gum" "yq" "fd" "bat" "flatpak")
     elif command -v apt &>/dev/null; then
-        sudo apt install curl gnupg wget
-        echo "Adding yq Repo source"
-        wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq &&\
-            chmod +x /usr/local/bin/yq
-        sudo mkdir -p /etc/apt/keyrings
-        curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
-        echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
-        local dependencies=("gum" "fzf" "fd" "bat" "flatpak")
+        adding_yq_gum
+        local dependencies=("gum" "fzf" "fd-find" "bat" "flatpak")
     fi
   local dependencies_install=()
   local update=1
