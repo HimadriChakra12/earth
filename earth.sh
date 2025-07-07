@@ -54,8 +54,7 @@ install_dependencies() {
     if command -v pacman &>/dev/null; then
         sudo pacman -Sy
         pacman_install "${dependencies_install[@]}"
-    fi
-    if command -v apt &>/dev/null; then
+    elif command -v apt &>/dev/null; then
         sudo apt upgrade && apt update
         apt_install "${dependencies_install[@]}"
         sudo ln -s $(which fdfind) /usr/local/bin/fd
