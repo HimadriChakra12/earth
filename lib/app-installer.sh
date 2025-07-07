@@ -102,8 +102,6 @@ installer() {
             esac
         done 
     fi
-
-done
 text_log "Complete :)"
 }
 
