@@ -20,21 +20,11 @@ fi
 cleanup() {
   [[ -d "${script_dir}/cache" ]] && rm -rf "${script_dir}/cache"
 }
-adding_gum(){
-    sudo apt install curl gnupg wget
-    if [-f /etc/apt/keyrings/charm.gpg]; then
-        echo "Chewing Gum"
-        sudo mkdir -p /etc/apt/keyrings
-        curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
-    fi
-    echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
-}
 
 install_dependencies() {
     if command -v pacman &>/dev/null; then
         local dependencies=("fzf" "gum"  "fd" "bat" "flatpak")
     elif command -v apt &>/dev/null; then
-        adding_yq_gum
         local dependencies=("gum" "fzf" "fd-find" "bat" "flatpak")
     fi
   local dependencies_install=()
@@ -55,6 +45,7 @@ install_dependencies() {
         sudo pacman -Sy
         pacman_install "${dependencies_install[@]}"
     elif command -v apt &>/dev/null; then
+        adding_gum
         sudo apt upgrade && apt update
         apt_install "${dependencies_install[@]}"
         sudo ln -s $(which fdfind) /usr/local/bin/fd
@@ -62,6 +53,15 @@ install_dependencies() {
   fi
 }
 
+adding_gum(){
+    sudo apt install curl gnupg wget
+    if [-f /etc/apt/keyrings/charm.gpg]; then
+        echo "Chewing Gum"
+        sudo mkdir -p /etc/apt/keyrings
+        curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
+    fi
+    echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
+}
 # --  Variable  -- #
 text_box_size=$(($(tput cols) - 4))
 config_toml=Null
