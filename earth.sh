@@ -54,8 +54,11 @@ install_dependencies() {
     if command -v apt &>/dev/null; then
         sudo apt upgrade && apt update
         apt_install "${dependencies_install[@]}"
-        if [ -f gum_latest.deb ]; then
+        if [ -f gum.deb ]; then
             rm gum.deb
+        fi
+        if [ -f yq.deb ]; then
+            rm yq.deb
         fi
     fi
   fi
