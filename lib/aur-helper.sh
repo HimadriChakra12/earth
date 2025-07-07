@@ -51,11 +51,11 @@ install_helper() {
 
 # -- Automated AUR helper installers -- #
 
-install_yay() {
-  if check_app_installed "git"; then
+if check_app_installed "git"; then
     sudo pacman -S --needed --noconfirm git base-devel
-  fi
+fi
 
+install_yay() {
   setup_cache
   cd "${script_dir}/cache" || return 1
 
@@ -77,10 +77,6 @@ install_yay() {
 }
 
 install_paru() {
-  if check_app_installed "git"; then
-    sudo pacman -S --needed --noconfirm git base-devel
-  fi
-
   setup_cache
   cd "${script_dir}/cache" || return 1
 

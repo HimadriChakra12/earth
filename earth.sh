@@ -37,8 +37,14 @@ install_dependencies() {
       echo " - ${i}"
     done
     sleep 1
-    sudo pacman -Sy
-    pacman_install "${dependencies_install[@]}"
+    if command -v pacman &>/dev/null; then
+        sudo pacman -Sy
+        pacman_install "${dependencies_install[@]}"
+    fi
+    if command -v apt &>/dev/null; then
+        sudo apt upgrade && apt update
+        apt_install "${dependencies_install[@]}"
+    fi
   fi
 }
 
@@ -48,7 +54,9 @@ config_toml=Null
 trap cleanup EXIT
 
 install_dependencies
-aur_helper_checks
+    if command -v pacman &>/dev/null; then
+        aur_helper_checks
+    fi
 while true; do
   clear
   title

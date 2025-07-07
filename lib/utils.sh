@@ -100,6 +100,9 @@ check_app_installed() {
 pacman_install() {
   sudo pacman -S "${@}" --noconfirm
 }
+apt_install() {
+  sudo apt install "${@}" 
+}
 flatpak_install() {
   flatpak install flathub -y "${1}"
 }

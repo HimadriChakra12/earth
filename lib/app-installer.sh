@@ -45,7 +45,7 @@ select_file() {
         for i in "${table_names[@]}"; do
             if tomlq -r "${i} // empty" "$config_toml" | grep -q .; then
                 if [[ ${i} == ".apt.install" ]]; then
-                    if text_confirm "Confirm to install pacman packages"; then
+                    if text_confirm "Confirm to install apt packages"; then
                         table_found_names+=("${i}")
                     fi
                 fi
@@ -100,6 +100,16 @@ install_pac_apps() {
   mapfile -t packages < <(tomlq -r '.pacman.install[]' "$config_toml")
   for i in "${packages[@]}"; do
     pacman_install "$i"
+
+  done
+}
+
+install_pac_apps() {
+  tput_clean_text_area
+  local packages=()
+  mapfile -t packages < <(tomlq -r '.apt.install[]' "$config_toml")
+  for i in "${packages[@]}"; do
+    apt_install "$i"
 
   done
 }
