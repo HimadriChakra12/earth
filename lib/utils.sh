@@ -101,7 +101,7 @@ pacman_install() {
   sudo pacman -S "${@}" --noconfirm
 }
 apt_install() {
-  sudo apt install "${@}" 
+  sudo apt install "${@}" -y
 }
 flatpak_install() {
   flatpak install flathub -y "${1}"

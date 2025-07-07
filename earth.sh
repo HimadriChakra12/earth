@@ -22,7 +22,17 @@ cleanup() {
 }
 
 install_dependencies() {
-  local dependencies=("fzf" "gum" "yq" "fd" "bat" "flatpak")
+    if command -v pacman &>/dev/null; then
+        local dependencies=("fzf" "gum" "yq" "fd" "bat" "flatpak")
+    fi
+    if command -v apt &>/dev/null; then
+        echo "Adding yq Repo source"
+        curl -s https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xC7B3F074A95A061E | gpg --dearmor | sudo tee /usr/share/keyrings/yq.gpg > /dev/null
+        echo "deb [signed-by=/usr/share/keyrings/yq.gpg] https://packagecloud.io/mikefarah/yq/debian/ any main" | sudo tee /etc/apt/sources.list.d/yq.list
+        latest_gum=$(curl -s https://api.github.com/repos/charmbracelet/gum/releases/latest | grep "browser_download_url" | grep ".deb" | cut -d '"' -f 4)
+        wget "$latest_gum" -O gum.deb
+        local dependencies=("yum" "gum.deb" "fzf" "fd" "bat" "flatpak" "curl" "gnupg" "wget")
+    fi
   local dependencies_install=()
   local update=1
   for i in "${dependencies[@]}"; do
@@ -44,6 +54,9 @@ install_dependencies() {
     if command -v apt &>/dev/null; then
         sudo apt upgrade && apt update
         apt_install "${dependencies_install[@]}"
+        if [ -f gum_latest.deb ]; then
+            rm gum.deb
+        fi
     fi
   fi
 }
