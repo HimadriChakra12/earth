@@ -23,9 +23,8 @@ select_file() {
   text_box_confirm "Is ${config_toml} the right file?"
   if command -v pacman &>/dev/null; then
       if text_confirm "Confirm"; then
-          local table_names=(".pacman.install" ".flatpak.install")
+          local table_names=(".pacman.install" ".flatpak.install" ".apt.install")
           table_found_names=()
-
           for i in "${table_names[@]}"; do
               if tomlq -r "${i} // empty" "$config_toml" | grep -q .; then
                   if [[ ${i} == ".pacman.install" ]]; then
@@ -37,6 +36,9 @@ select_file() {
                       if text_confirm "Confirm to install flatpak packages"; then
                           table_found_names+=("${i}")
                       fi
+                  fi
+                  if [[ ${i} == ".apt.install" ]]; then
+                      break
                   fi
               fi
           done
@@ -49,7 +51,7 @@ select_file() {
 
           for i in "${table_names[@]}"; do
               if tomlq -r "${i} // empty" "$config_toml" | grep -q .; then
-                  if [[ ${i} == ".pacman.install" ]]; then
+                  if [[ ${i} == ".apt.install" ]]; then
                       if text_confirm "Confirm to install pacman packages"; then
                           table_found_names+=("${i}")
                       fi
@@ -58,6 +60,9 @@ select_file() {
                       if text_confirm "Confirm to install flatpak packages"; then
                           table_found_names+=("${i}")
                       fi
+                  fi
+                  if [[ ${i} == ".pacman.install" ]]; then
+                      break
                   fi
               fi
           done
