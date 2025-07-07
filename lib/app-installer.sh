@@ -47,33 +47,32 @@ select_file() {
           local table_names=(".flatpak.install" ".apt.install")
           table_found_names=()
 
-              for i in "${table_names[@]}"; do
-                  if tomlq -r "${i} // empty" "$config_toml" | grep -q .; then
-                      if [[ ${i} == ".pacman.install" ]]; then
-                          if text_confirm "Confirm to install pacman packages"; then
-                              table_found_names+=("${i}")
-                          fi
-                      fi
-                      if [[ ${i} == ".flatpak.install" ]]; then
-                          if text_confirm "Confirm to install flatpak packages"; then
-                              table_found_names+=("${i}")
-                          fi
+          for i in "${table_names[@]}"; do
+              if tomlq -r "${i} // empty" "$config_toml" | grep -q .; then
+                  if [[ ${i} == ".pacman.install" ]]; then
+                      if text_confirm "Confirm to install pacman packages"; then
+                          table_found_names+=("${i}")
                       fi
                   fi
-              done
-          fi
+                  if [[ ${i} == ".flatpak.install" ]]; then
+                      if text_confirm "Confirm to install flatpak packages"; then
+                          table_found_names+=("${i}")
+                      fi
+                  fi
+              fi
+          done
       fi
 
-      if ((${#table_found_names[@]} > 0)); then
-          installer
-      else
-          text_box "No installation tables confirmed. Skipping installer."
-      fi
-
+  if ((${#table_found_names[@]} > 0)); then
+      installer
   else
-      if text_confirm "Do you wish to redo?"; then
-          select_file
-      fi
+      text_box "No installation tables confirmed. Skipping installer."
+  fi
+
+else
+    if text_confirm "Do you wish to redo?"; then
+        select_file
+    fi
   fi
 }
 
