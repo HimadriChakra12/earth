@@ -24,8 +24,7 @@ cleanup() {
 install_dependencies() {
     if command -v pacman &>/dev/null; then
         local dependencies=("fzf" "gum" "yq" "fd" "bat" "flatpak")
-    fi
-    if command -v apt &>/dev/null; then
+    elif command -v apt &>/dev/null; then
         sudo apt install curl gnupg wget
         echo "Adding yq Repo source"
         latest_yq=$(curl -s https://api.github.com/repos/mikefarah/yq/releases/latest | grep "browser_download_url" | grep "amd64.deb" | cut -d '"' -f 4)
