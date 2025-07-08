@@ -81,7 +81,7 @@ install_pac_apps() {
   done
 }
 
-install_pac_apps() {
+install_apt_apps() {
   tput_clean_text_area
   local packages=()
   mapfile -t packages < <(tomlq -r '.apt.install[]' "$config_toml")
