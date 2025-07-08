@@ -24,8 +24,8 @@ select_file() {
       local table_names=(".pacman.install" ".flatpak.install" ".apt.install")
       table_found_names=()
       for i in "${table_names[@]}"; do
-          if command -v pacman &>/dev/null; then
-              if tomlq -r "${i} // empty" "$config_toml" | grep -q .; then
+          if tomlq -r "${i} // empty" "$config_toml" | grep -q .; then
+              if command -v pacman &>/dev/null; then
                   if [[ ${i} == ".pacman.install" ]]; then
                       if text_confirm "Confirm to install pacman packages"; then
                           table_found_names+=("${i}")
@@ -62,14 +62,21 @@ else
 
 installer() {
   tput_clean_text_area
-  for i in "${table_found_names[@]}"; do
-    case "${i}" in
-    ".pacman.install") install_pac_apps ;;
-    ".flatpak.install") install_flatpak_apps ;;
-    ".apt.install") install_apt_apps ;;
-
-    esac
-  done
+  if command -v pacman &>/dev/null; then
+      for i in "${table_found_names[@]}"; do
+          case "${i}" in
+              ".pacman.install") install_pac_apps ;;
+              ".flatpak.install") install_flatpak_apps ;;
+          esac
+      done
+  elif command -v apt &>/dev/null; then
+      for i in "${table_found_names[@]}"; do
+          case "${i}" in
+              ".flatpak.install") install_flatpak_apps ;;
+              ".apt.install") install_apt_apps ;;
+          esac
+      done
+  fi
   text_log "Complete :)"
 }
 
