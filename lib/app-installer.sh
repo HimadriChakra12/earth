@@ -66,6 +66,8 @@ installer() {
     case "${i}" in
     ".pacman.install") install_pac_apps ;;
     ".flatpak.install") install_flatpak_apps ;;
+    ".apt.install") install_apt_apps ;;
+
     esac
   done
   text_log "Complete :)"
