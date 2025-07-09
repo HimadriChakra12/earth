@@ -8,7 +8,9 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${script_dir}/lib/settings.sh"
 source "${script_dir}/lib/app-installer.sh"
 source "${script_dir}/lib/utils.sh"
-source "${script_dir}/lib/aur-helper.sh"
+    if command -v pacman &>/dev/null 2>&1; then
+        source "${script_dir}/lib/aur-helper.sh"
+    fi
 
 if [[ "$(tty)" == "/dev/tty"* ]]; then
   source "${script_dir}/lib/tty-ui.sh"
@@ -22,9 +24,9 @@ cleanup() {
 }
 
 install_dependencies() {
-    if command -v pacman &>/dev/null; then
+    if command -v pacman &>/dev/null 2>&1; then
         local dependencies=("fzf" "gum"  "fd" "bat" "flatpak")
-    elif command -v apt &>/dev/null; then
+    elif command -v apt &>/dev/null 2>&1; then
         local dependencies=("gum" "fzf" "bat" "flatpak" "fd-find")
     fi
   local dependencies_install=()
