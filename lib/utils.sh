@@ -83,13 +83,15 @@ fzf_stylised_preview() {
 #-------------------------------------------
 check_app_installed() {
     if ! command -v "pacman" &>/dev/null; then
-        if ! pacman -s "$1">/dev/null; then
+        if ! pacman -s "$1">/dev/null 2>&1; then
             return 0
         fi
     elif ! command -v "apt" &>/dev/null; then
-        if ! dpkg -s "$1">/dev/null; then
-            return 1
+        if ! dpkg -s "$1">/dev/null 2>&1; then
+            return 0
         fi
+    else
+        return 1
     fi
 }
 # -- Application installers -- #
