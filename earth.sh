@@ -67,7 +67,7 @@ config_toml=Null
 trap cleanup EXIT
 
 install_dependencies
-    if command -v pacman &>/dev/null; then
+    if command -v pacman &>/dev/null 2>&1; then
         aur_helper_checks
     fi
 while true; do
