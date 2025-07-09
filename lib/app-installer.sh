@@ -31,17 +31,17 @@ select_file() {
                           table_found_names+=("${i}")
                       fi
                   fi
-              fi
-          elif command -v apt &>/dev/null; then
-              if [[ ${i} == ".apt.install" ]]; then
-                  if text_confirm "Confirm to install pacman packages"; then
-                      table_found_names+=("${i}")
+              elif command -v apt &>/dev/null; then
+                  if [[ ${i} == ".apt.install" ]]; then
+                      if text_confirm "Confirm to install pacman packages"; then
+                          table_found_names+=("${i}")
+                      fi
                   fi
               fi
-          fi
-          if [[ ${i} == ".flatpak.install" ]]; then
-              if text_confirm "Confirm to install flatpak packages"; then
-                  table_found_names+=("${i}")
+              if [[ ${i} == ".flatpak.install" ]]; then
+                  if text_confirm "Confirm to install flatpak packages"; then
+                      table_found_names+=("${i}")
+                  fi
               fi
           fi
       done
@@ -72,8 +72,8 @@ installer() {
   elif command -v apt &>/dev/null; then
       for i in "${table_found_names[@]}"; do
           case "${i}" in
-              ".flatpak.install") install_flatpak_apps ;;
               ".apt.install") install_apt_apps ;;
+              ".flatpak.install") install_flatpak_apps ;;
           esac
       done
   fi
