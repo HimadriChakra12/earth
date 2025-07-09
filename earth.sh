@@ -50,7 +50,6 @@ install_dependencies() {
         adding_gum
         sudo apt upgrade && apt update
         apt_install "${dependencies_install[@]}"
-        sudo ln -s $(which fdfind) /usr/local/bin/fd
     fi
   fi
 }
