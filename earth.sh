@@ -8,7 +8,7 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${script_dir}/lib/settings.sh"
 source "${script_dir}/lib/app-installer.sh"
 source "${script_dir}/lib/utils.sh"
-    if command -v pacman &>/dev/null 2>&1; then
+    if command -v pacman &>/dev/null; then
         source "${script_dir}/lib/aur-helper.sh"
     fi
 
@@ -24,9 +24,9 @@ cleanup() {
 }
 
 install_dependencies() {
-    if command -v pacman &>/dev/null 2>&1; then
+    if command -v pacman &>/dev/null; then
         local dependencies=("fzf" "gum"  "fd" "bat" "flatpak")
-    elif command -v apt &>/dev/null 2>&1; then
+    elif command -v apt &>/dev/null; then
         local dependencies=("gum" "fzf" "bat" "flatpak" "fd-find")
     fi
   local dependencies_install=()
