@@ -8,9 +8,9 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${script_dir}/lib/settings.sh"
 source "${script_dir}/lib/app-installer.sh"
 source "${script_dir}/lib/utils.sh"
-    if command -v pacman &>/dev/null; then
-        source "${script_dir}/lib/aur-helper.sh"
-    fi
+if command -v pacman &>/dev/null; then
+    source "${script_dir}/lib/aur-helper.sh"
+fi
 
 if [[ "$(tty)" == "/dev/tty"* ]]; then
   source "${script_dir}/lib/tty-ui.sh"
