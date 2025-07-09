@@ -65,13 +65,13 @@ text_log() {
 }
 
 fzf_stylised() {
-    --border rounded \
+  fzf --border rounded \
     --margin 0,1 \
     --height 20% \
     --border-label ' Package Finder ' --input-label ' Input ' --header-label ' File Type '
 }
 fzf_stylised_preview() {
-    --border rounded \
+  fzf --border rounded \
     --margin 0,1 \
     --height 20% \
     --border-label ' Toml Finder ' --input-label ' Input ' --header-label ' File Type ' \
