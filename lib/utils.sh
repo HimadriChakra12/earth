@@ -8,12 +8,24 @@ tput_clean_text_area() {
   tput ed
 }
 
+check_app_installed() {
+    if ! command -v "pacman" &>/dev/null; then
+        if ! pacman -s "$1">/dev/null 2>&1; then
+            return 0
+        fi
+    elif ! command -v "apt" &>/dev/null; then
+        if ! dpkg -s "$1">/dev/null 2>&1; then
+            return 1
+        fi
+    fi
+}
+
 setup_cache() {
   text_log "Creating cache folder for temporary files..."
   mkdir -p "${script_dir}/cache"
 }
 
-# -  Output text format  -- #
+# --  Output text format  -- #
 title() {
   gum style \
     --foreground 4 --border-foreground 2 --border double \
