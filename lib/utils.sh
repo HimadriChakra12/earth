@@ -65,14 +65,12 @@ text_log() {
 }
 
 fzf_stylised() {
-  fzf --style full \
     --border rounded \
     --margin 0,1 \
     --height 20% \
     --border-label ' Package Finder ' --input-label ' Input ' --header-label ' File Type '
 }
 fzf_stylised_preview() {
-  fzf --style full \
     --border rounded \
     --margin 0,1 \
     --height 20% \
